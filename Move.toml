@@ -1,0 +1,16 @@
+[package]
+name = "xgen"
+version = "1.0.0"
+authors = ["Welles"]
+
+[addresses]
+xgen_addr = "ee5716fbce3134f4649a90f2bb77cd61b80d8284078a6e77b1183dc0c4a6a00a"
+
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-core.git"
+rev = "mainnet"
+subdir = "aptos-move/framework/aptos-framework"
+
+[dev-dependencies]
