@@ -1,4 +1,4 @@
-module xgen_addr::contract_v1 {
+module xgen_addr::contract_v2 {
     use aptos_std::table::{Self, Table};
     use std::signer;
 
@@ -24,14 +24,14 @@ module xgen_addr::contract_v1 {
         move_to(account, contracts_holder);
     }
 
-    public entry fun create_contract(account: &signer, payable_level: u64) acquires ContractList {
+    public entry fun create_contract(account: &signer, agent_address: address, payable_level: u64) acquires ContractList {
         let signer_address = signer::address_of(account);
         assert!(exists<ContractList>(signer_address), E_NOT_INTIALIZED);
         let contract_list = borrow_global_mut<ContractList>(signer_address);
         let counter = contract_list.contract_counter + 1;
         let new_contract = Contract {
             contract_id: counter,
-            address: signer_address,
+            address: agent_address,
             payable_level: payable_level
         };
         table::upsert(&mut contract_list.contracts, counter, new_contract);

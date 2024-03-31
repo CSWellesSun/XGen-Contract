@@ -4,7 +4,7 @@ version = "1.0.0"
 authors = ["Welles"]
 
 [addresses]
-xgen_addr = "0x8b8d307abd840d32669e7975a110187a401310353e07eb7aa2d2997135566944"
+xgen_addr = "0xe6c595950a38dedc2a967ef78a7ab7ef802c8344deb7c1f2236015a7e213796c"
 
 [dev-addresses]
 
