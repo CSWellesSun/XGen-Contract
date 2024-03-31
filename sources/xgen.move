@@ -1,4 +1,4 @@
-module xgen_addr::contract_v2 {
+module xgen_addr::contract_v3 {
     use aptos_std::table::{Self, Table};
     use std::signer;
 
@@ -46,9 +46,8 @@ module xgen_addr::contract_v2 {
     }
 
     #[view]
-    public fun get_payable_level(account: &signer, contract_id: u64): u64 acquires ContractList {
-        let signer_address = signer::address_of(account);
-        let contract_list = borrow_global<ContractList>(signer_address);
+    public fun get_payable_level(account: address, contract_id: u64): u64 acquires ContractList {
+        let contract_list = borrow_global<ContractList>(account);
         let contract = table::borrow(&contract_list.contracts, contract_id);
         contract.payable_level
     }
